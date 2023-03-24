@@ -242,7 +242,7 @@ pairIdxChoice = randperm(numel(idxs),1);
 pairIdx1 = idxs(pairIdxChoice(1));
 % pairIdx2 = idxs(pairIdxChoice(1));
 pairLabel = classes(pairIdx1);
-
+label = 1
 end
 
 function  [pairIdx2,label] = getsecondIntensity(classLabel)
@@ -252,18 +252,16 @@ classes = (classLabel);
 
 % Choose two different classes randomly which will be used to get a
 % dissimilar pair.
-classesChoice = randperm(numel(classes),1);
+classesChoice = randperm(numel(classes),2);
 
-% Find the indices of all the observations from the first and second
-% classes.
-% idxs1 = find(classLabel==classes(classesChoice(1)));
-idxs2 = find(classLabel==classes(classesChoice(1)));
+idxs1 = find(classLabel==classes(classesChoice(1)));
+idxs2 = find(classLabel==classes(classesChoice(2)));
 
 % Randomly choose one image from each class.
-% pairIdx1Choice = randi(numel(idxs1));
+pairIdx1Choice = randi(numel(idxs1));
 pairIdx2Choice = randi(numel(idxs2));
-% pairIdx1 = idxs1(pairIdx1Choice);
+pairIdx1 = idxs1(pairIdx1Choice);
 pairIdx2 = idxs2(pairIdx2Choice);
-label = classes(pairIdx2);
+label = 0 ;
 end
 %%
